@@ -2,6 +2,14 @@ name: Print Message
 
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to run the workflow on'
+        type: choice
+        required: true
+        default: 'main'
+        options:
+          - 'main'
 
 jobs:
   print:
