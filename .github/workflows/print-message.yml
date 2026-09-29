@@ -1,17 +1,19 @@
 name: Print Message
 
 on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to run the workflow on'
-        type: choice
-        required: true
-        default: 'main'
-        options:
-          - 'main'
+  workflow_dispatch: {}
 
 jobs:
+  check-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the branch
+        run: |
+          if [ "$GITHUB_REF" != "refs/heads/main" ]; then
+            echo "Not on main branch"
+            exit 1
+          fi
+
   print:
     runs-on: ubuntu-latest
     steps:
