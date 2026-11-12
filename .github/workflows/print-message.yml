@@ -13,6 +13,9 @@ jobs:
             echo "Not on main branch"
             exit 1
           fi
+          echo "::warning::These changes are not deployed yet and will ship with this run: .github/workflows/print-message.yml"
+          echo "### Not deployed yet" >> "$GITHUB_STEP_SUMMARY"
+          echo ".github/workflows/print-message.yml" >> "$GITHUB_STEP_SUMMARY"
 
   print:
     needs: check-branch
