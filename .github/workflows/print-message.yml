@@ -15,7 +15,10 @@ jobs:
           fi
 
   print:
+    needs: check-branch
     runs-on: ubuntu-latest
+    environment:
+      name: stage
     steps:
       - name: Print a message
         run: echo "Hello from GitHub Actions!"
